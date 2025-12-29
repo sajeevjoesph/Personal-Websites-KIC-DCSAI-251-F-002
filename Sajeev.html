@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background: #fff;
+    color: #080808;
+}
+
+#header{
+    width: 100%;
+    height: 100vh; 
+    background-image: url(images/background.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.container{
+    padding: 10px 10%;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo{
+    width: 140px;
+}
+
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+nav ul li a{
+    color: #080808;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+
+nav ul li a::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+
+nav ul li a:hover::after{
+    width: 100%;
+}
+
+.header-text{
+    color: #080808;
+    margin-top: 20%;
+    font-size: 30px;
+}
+
+.header-text h1{
+    color: #ff004f;
+    font-size: 60px;
+    margin-top: 20px;
+}
+
+.header-text h1 span{
+    color: #ff004f;
+}
+
+/*----------------About---------------*/
+
+#about{
+    padding: 80px 0;
+    color: #ababab;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about-col-1{
+    flex-basis: 35%;
+}
+
+.about-col-1 img{
+    width: 100%;
+    border-radius: 15px;
+}
+
+.about-col-2{
+    flex-basis: 60%;
+}
+
+.sub-title{
+    font-size: 60px;
+    font-weight: 600;
+    color: #080808;
+}
+
+.tab-titles{
+    display: flex;
+    margin: 20px 0 40px;
+}
+
+.tab-links{
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-links::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+.tab-links.active-link::after{
+    width: 50%;
+}
+
+.tab-contents ul li{
+    list-style: none;
+    margin: 10px 0;
+}
+
+.tab-contents ul li span{
+    color: #b54769;
+    font-size: 14px;
+}
+
+.tab-contents{
+    display: none;
+}
+
+.tab-contents.active-tab{
+    display: block;
+}
+
+/*--------------Skills---------------*/
+
+#skills{
+    padding: 30px 0;
+}
+
+.skills-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+
+.skills-list div{
+    background: #262626;
+    padding: 40px;
+    font-size: 13px;
+    font-weight: 300;
+    border-radius: 10px;
+    transition: background 0.5s, transform 0.5s;
+}
+
+.skills-list div h2{
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.skills-list div a{
+    text-decoration: none;
+    color: #080808;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.skills-list div:hover{
+    background: #ff004f;
+    transform: translateY(-10px);
+}
+
+.skills-list div ul li{
+    margin-top: 2%;
+    margin-bottom: 1px;
+    font-size: 15px;
+}
+
+/*--------------Projects---------------*/
+
+#projects{
+    padding: 50px 0;
+}
+
+.project-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+
+.project{
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.project img{
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.layer{
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0,0,0,0.6), #ff004f);
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: height 0.5s;
+}
+
+.layer h3{
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.layer a{
+    margin-top: 10px;
+    color: #ff004f;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+    background: #080808;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+} 
+
+.project:hover img{
+    transform: scale(1.1); 
+}
+
+.project:hover .layer{
+    height: 100%;
+}
+
+.btn{
+    display: block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid #ff004f;
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #080808;
+    transition: background 0.5s;
+}
+
+.btn:hover{
+    background: #ff004f;
+}
+
+/*---------------Contact---------------*/
+
+.contact-left{
+    flex-basis: 35%;
+}
+
+.contact-right{
+    flex-basis: 60%;
+}
+
+.contact-left p{
+    margin-top: 30px;
+}
+
+.contact-left p i{
+    color: #ff004f;
+    margin-right: 15px;
+    font-size: 25px;
+}
+
+.social-icons{
+    margin-top: 30px;
+}
+
+.social-icons a{
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #ababab;
+    display: inline-block ;
+    transition: transform 0.5s;
+}
+
+.social-icons a:hover{
+    color: #ff004f;
+    transform: translateY(-5px);
+}
+
+.btn.btn2{
+    display: inline-block;
+    background: #ff004f;
+}
+
+.contact-right form{
+    width: 100%;
+}
+
+form input, form textarea{
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: #080808;
+    font-size: 18px;
+    border-radius: 6px;
+}
+
+form .btn2{
+    padding: 14px 60px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.copyright{
+    width: 100%;
+    text-align: center;
+    padding: 25px 0; 
+    background: #262626;
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+
+
+</style>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Personal Portfolio Website ( KIC-DCSAI-251-F-002 ) </title>
+        
+        <script src="https://kit.fontawesome.com/221c628ce3.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div id="header">
+            <div class="container">
+                <nav>
+                    <img src="images/logo.png" class="logo">
+                    <ul id="sidemenu">
+                        <li><a href="#about"> About </a></li>
+                        <li><a href="#skills"> Skills </a></li>
+                        <li><a href="#projects"> Projects </a></li>
+                        <li><a href="#contact"> Contact </a></li>
+                        <i class="fas fa-times" onclick="closemenu()"></i>
+                    </ul>
+                    <i class="fas fa-bars" onclick="openmenu()"></i>
+                </nav>
+                <div class="header-text">
+                    <p> DCSAI-25.1-F Batch Student ( KIC )</p>
+                    <h1>Hi, I'm <span> Sajeev </span> <br> From Batticaloa.</h1>
+                </div>
+            </div>
+        </div>
+
+<!----------------about-------------------->       
+
+        <div id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="about-col-1">
+                        <img src="images/20250227_142314.jpg">
+                    </div>
+                    <div class="about-col-2">
+                        <h1 class="sub-title"> About Me </h1>
+                        <p>My name is James Sajeev, and I am currently a first-year undergraduate student pursuing BSc (Hons) in Computer Science with Artificial Intelligence. 
+                            I completed my school education at St/Micheal's College Batticaloa, where I developed a strong interest in technology and problem-solving. 
+                            I am passionate about learning computer science concepts, programming, and modern AI technologies. 
+                            My goal is to build a successful career in the field of artificial intelligence and software development while continuously improving my technical and analytical skills.</p>
+
+                        <div class="tab-titles">
+                            <p class="tab-links active-link " onclick="opentab('skills')"> Skills </p>
+                            <p class="tab-links" onclick="opentab('education')"> Education </p>
+                        </div>
+
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li><span> UI/UX </span><br> Designing Web/App interfaces </li>
+                                <li><span> Web Development </span><br> Web app Development </li>
+                                <li><span> App Development </span><br> Building Android / iOS apps  </li>
+                            </ul>
+                        </div>
+
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <li><span> 2027 </span><br> BSc (Hons) in Computer Science with Artificial Intelligence </li>
+                                <li><span> 2023 </span><br> GCE AL </li>
+                                <li><span> 2020 </span><br> GCE OL </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!----------------Skills Sections-------------------->
+
+        <div id="skills">
+            <div class="container">
+                <h1 class="sub-title"> Skills </h1>
+                <div class="skills-list">
+                    <div>
+                        <h2> Programming Languages </h2>   
+                        <ul>
+                            <li> HTML </li>
+                            <li> CSS </li>
+                            <li> JavaScript </li>
+                            <li> C </li>
+                            <li> C++ </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2> Web Technologies </h2>   
+                        <ul>
+                            <li> Front-end Web Development </li>
+                            <li> Responsive Web Design </li>
+                            <li> DOM Manipulation </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2> Tools </h2>   
+                        <ul>
+                            <li> notepad ++ </li>
+                            <li> Git & GitHub </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!------------------projects------------------->   
+
+        <div id="projects">
+            <div class="container">
+                <h1 class="sub-title"> Projects </h1>
+                <div class="project-list">
+                    <div class="project">
+                        <img src="images/project1.jpg">
+                        <div class="layer">
+                            <h3> Personal Blog Website </h3>
+                            <p> A personal blog website designed to share articles related to technology, education, and student life. 
+                                The website includes multiple blog posts with titles, dates, and descriptions. </p>
+                            <a href="#"><i class="fas fa-external-link-alt"></i></a>    
+                        </div>
+                    </div>
+                    <div class="project">
+                        <img src="images/download.jpeg">
+                        <div class="layer">
+                            <h3> Car Service Booking System </h3>
+                            <p>The Customer friendly interface For booking Service For Cars </p>   
+                        </div>
+                    </div>
+                    <div class="project">
+                        <img src="images/400820b5-3ecd-4000-9fb4-e65aa9946f4e-cover.png">
+                        <div class="layer">
+                            <h3> To-Do List Application </h3>
+                            <p> A task management application where users can add, delete, and manage daily tasks. 
+                                JavaScript DOM manipulation is used to update the task list dynamically. </p>
+                            <a href="#"><i class="fas fa-external-link-alt"></i></a>    
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="btn"> See more </a>
+            </div>
+        </div>
+
+<!----------------Contact------------------->   
+
+        <div id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="contact-left">
+                        <h1 class="sub-title"> Contact Me </h1>
+                        <p> <i class="fas fa-paper-plane"></i> sajeevjoesph@gmail@.com </p>
+                        <p> <i class="fas fa-phone-square-alt"></i> +94 716006794 </p>
+                        <div class="social-icons">
+                            <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+                            <a href="https://x.com/"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                        <a href="#" download class="btn btn2"> Download CV </a>
+                    </div>
+                    <div class="contact-right">
+                        <form>
+                            <input type="text" name="Name" placeholder="Your Name" required>
+                            <input type="email" name="Email" placeholder="Your Email" required>
+                            <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                            <button type="submit" class="btn btn2"> Submit </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p> Copyright © Sajeev ( KIC-DCSAI-251-F-002 ) </p>
+            </div>
+        </div>
+
+        <script>
+
+            var tablinks = document.getElementsByClassName("tab-links");
+            var tabcontents = document.getElementsByClassName("tab-contents");
+
+            function opentab(tabname){
+                for(tablink of tablinks){
+                    tablink.classList.remove("active-link");
+                }
+                for(tabcontent of tabcontents){
+                    tabcontent.classList.remove("active-tab");
+                }
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab")
+            }
+
+        </script>
+
+        <script>
+
+            var sidemenu = document.getElementById("sidemenu");
+
+            function openmenu(){
+               sidemenu.style.right = "0";
+            }
+            function closemenu(){
+                sidemenu.style.right = "-200px";
+            }
+
+        </script>
+
+    </body>
+</html>
